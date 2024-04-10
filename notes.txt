@@ -1,0 +1,39 @@
+*
+  EX Serach filtering functions on Order.js
+
+
+  function search(items) {
+    if (!searchQuery) return items;
+    return items.filter((item) =>
+      //includes znaci contains string
+      item[searchBy.name].toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
+  //filter by developeror or status
+  //npr:filterBy={developer:Svadbenicvet, status:Active}
+  function filter(items) {
+    if (_.isEmpty(filterBy)) return items;
+    return items.filter((item) => {
+      for (let [key, value] of Object.entries(filterBy)) {
+        if (!item[key].includes(value)) return false;
+      }
+      return true;
+    });
+  }
+
+  const filterDate = (items, dateState, label) => {
+    if (dateState[0] === null || dateState[1] === null) return items;
+    let min = dateState[0].toLocaleDateString();
+    let max = dateState[1].toLocaleDateString();
+    return items.filter((items) => {
+      let date = new Date(items[label]).toLocaleDateString();
+      return compareDates(date, min) && compareDates(max, date);
+    });
+  };
+*/
+  /*
+  const searched = search(allOrders);
+  let filtered = filter(searched);
+  filtered = filterDate(filtered, createdRange, "orderDate");
+  filtered = filterDate(filtered, deliveryRange, "deliveryTime");
+*/
