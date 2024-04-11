@@ -1,18 +1,15 @@
 import React from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import jwt_decode from "jwt-decode";
 
 import useAuth from "../hooks/useAuth";
+import decodeToken from "../utils/decodeToken";
 
+//STITI FRONTEND ROUTE
 const RequireAuth = ({ allowedRoles }) => {
   const { auth } = useAuth();
   const location = useLocation();
 
-  const decoded = auth?.accessToken ? jwt_decode(auth.accessToken) : undefined;
-  let roles = [];
-  if (decoded) {
-    roles = JSON.parse(decoded?.sub)?.UserInfo?.roles;
-  }
+  const { roles } = decodeToken(auth?.accessToken);
 
   return auth?.accessToken ? (
     roles.find((role) => allowedRoles?.includes(role)) ? (

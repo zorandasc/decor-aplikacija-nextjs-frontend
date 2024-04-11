@@ -9,7 +9,7 @@ import axios from "../api/axios";
 import useAuth from "../hooks/useAuth";
 import useToggle from "../hooks/useToggle";
 import useFormHook from "../hooks/useFormHook";
-import jwt_decode from "jwt-decode";
+import decodeToken from "../utils/decodeToken";
 
 const LOGIN_URL = "/login";
 
@@ -41,12 +41,7 @@ const Login = () => {
 
       const accessToken = response?.data?.accessToken;
 
-      const decoded = accessToken ? jwt_decode(accessToken) : undefined;
-
-      let roles = [];
-      if (decoded) {
-        roles = JSON.parse(decoded?.sub)?.UserInfo?.roles;
-      }
+      const { roles } = decodeToken(accessToken);
 
       setAuth({ username: form.username, roles, accessToken });
 
