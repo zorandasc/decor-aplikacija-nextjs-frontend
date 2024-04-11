@@ -1,6 +1,6 @@
 import axios from "../api/axios";
 import useAuth from "./useAuth";
-import decodeToken from "../utils/decodeToken";
+import jwt_decode from "jwt-decode";
 
 //GET NEW ACCESSTOKEN FORM BACKEND/refresh
 //WITH REFRESH TOKEN IN COOKI
@@ -12,10 +12,21 @@ const useRefreshToken = () => {
       withCredentials: true,
     });
     setAuth((prev) => {
-      console.log("from useRefreshToken,response?.data?.accessToken: ", response?.data?.accessToken)
+      console.log(
+        "from useRefreshToken,response?.data?.accessToken: ",
+        response?.data?.accessToken
+      );
       const accessToken = response?.data?.accessToken;
 
-      const { roles, username } = decodeToken(accessToken);
+      const decoded = accessToken ? jwt_decode(accessToken) : undefined;
+
+      let username = "";
+      let roles = [];
+      if (decoded) {
+        roles = JSON.parse(decoded.sub)?.UserInfo?.roles;
+        username = JSON.parse(decoded.sub)?.UserInfo?.username;
+      }
+
       return {
         ...prev,
         username,

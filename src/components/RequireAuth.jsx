@@ -1,15 +1,18 @@
 import React from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 import useAuth from "../hooks/useAuth";
-import decodeToken from "../utils/decodeToken";
 
-//REACT KOMPONENTA KOJA U APP.JSX STITI NASE RUTE
 const RequireAuth = ({ allowedRoles }) => {
   const { auth } = useAuth();
   const location = useLocation();
 
-  const { roles } = decodeToken(auth.accessToken);
+  const decoded = auth?.accessToken ? jwt_decode(auth.accessToken) : undefined;
+  let roles = [];
+  if (decoded) {
+    roles = JSON.parse(decoded?.sub)?.UserInfo?.roles;
+  }
 
   return auth?.accessToken ? (
     roles.find((role) => allowedRoles?.includes(role)) ? (

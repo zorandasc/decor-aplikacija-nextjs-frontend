@@ -4,13 +4,14 @@ import { Outlet } from "react-router-dom";
 import useRefreshToken from "../hooks/useRefreshToken";
 import useAuth from "../hooks/useAuth";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { Spinner } from "./common";
 
-//CHECK FOR EXSISTANCE OF REFRESH TOKEN
 const PersistLogin = () => {
   const [isLoading, setIsLoading] = useState(true);
   const refresh = useRefreshToken();
   const { auth } = useAuth();
+  //PERSIST SE ONDOSI NA TRUST THIS DEVICE
+  //AKO JE TRUE ONDA KADA USER REFRESHUJE PAGE APLIKACIJA
+  //OSTAJE GOGOVANA
   const [persist] = useLocalStorage("persist", false);
 
   //RUN WHEN BROWSER REFRESH I MORA BITI PRIJE
@@ -20,7 +21,7 @@ const PersistLogin = () => {
       try {
         await refresh();
       } catch (err) {
-        console.error(" from PersistLogin component: ", err);
+        console.error("PersistLogin component: ", err);
       } finally {
         setIsLoading(false);
       }
@@ -41,7 +42,7 @@ const PersistLogin = () => {
       {!persist ? ( //IF PERSIST FALSE, DONT CHECK accessToken EXSISTENCE
         <Outlet></Outlet>
       ) : isLoading ? (
-        <Spinner></Spinner>
+        <p>Loading...</p>
       ) : (
         <Outlet></Outlet>
       )}
