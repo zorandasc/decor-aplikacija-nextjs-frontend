@@ -97,17 +97,20 @@ const OrderForm = () => {
           ORDERS_API_URL + "/" + form._id,
           JSON.stringify(body)
         );
-        toast.success(`Narudžba id:${form._id}, izmjenjena.`);
+        toast.success(`🤑 Narudžba id:${body.orderId}, izmjenjena.`);
       } else {
-        await axiosPrivate.post(ORDERS_API_URL, JSON.stringify(form));
+        const { data } = await axiosPrivate.post(
+          ORDERS_API_URL,
+          JSON.stringify(form)
+        );
         //posto je uspijesno dodata order prebaci na prvu stranu
         setOrderPage(1);
-        toast.success("Nova narudžba kreirana.");
+        toast.success(`🤑 Nova narudžba sa Id:${data.orderId} kreirana.`);
       }
 
       navigate("/orders");
     } catch (err) {
-      toast.error(`🤑 🤐 🤭 ${err?.message}`);
+      toast.error(`🤐 🤭 ${err?.message}`);
     }
   };
 
@@ -138,7 +141,7 @@ const OrderForm = () => {
       if (!answer) return;
       try {
         await axiosPrivate.delete(basePath + "/" + item._id);
-        toast.warning(`🤑Predmet sa id:${item._id}. Obrisan.`);
+        toast.success(`🤑Predmet sa id:${item.orderId}. Obrisan.`);
       } catch (err) {
         toast.error(`🤐 🤭 Error ocured: ${err?.message}`);
       } finally {

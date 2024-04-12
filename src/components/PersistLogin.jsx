@@ -3,7 +3,8 @@ import { Outlet } from "react-router-dom";
 
 import useRefreshToken from "../hooks/useRefreshToken";
 import useAuth from "../hooks/useAuth";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useLocalStorage from "../hooks/useLocalStorage"
+import {Spinner} from "../components/common"
 
 const PersistLogin = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -42,7 +43,7 @@ const PersistLogin = () => {
       {!persist ? ( //IF PERSIST FALSE, DONT CHECK accessToken EXSISTENCE
         <Outlet></Outlet>
       ) : isLoading ? (
-        <p>Loading...</p>
+        <Spinner />
       ) : (
         <Outlet></Outlet>
       )}
