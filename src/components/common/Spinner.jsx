@@ -50,7 +50,7 @@ const ImgWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 3rem;
-  color: #8326B6;
+  color: #9ac86d;
   .spinner-img {
     color: rgb(103, 179, 230);
     width: 340px;
