@@ -88,7 +88,7 @@ const BtnNewDesk = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(1, 1, 1, 0.4);
+    background: rgba(1, 1, 1, 0.8);
     left: 0;
     top: 0;
     border-radius: 10px;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import { formatNumber, formatDate } from "../../utils/helper";
+import {formatDate } from "../../utils/numberHelper";
 
 class OrderFormToPrint extends Component {
   render() {
@@ -74,7 +74,7 @@ class OrderFormToPrint extends Component {
                 name="totalPrice"
                 className="form-control"
                 readOnly
-                value={formatNumber(order.totalPrice)}
+                value={order.totalPrice.toLocaleString()}
               ></input>
             </div>
             <div>
@@ -83,7 +83,7 @@ class OrderFormToPrint extends Component {
                 name="avans"
                 className="form-control"
                 readOnly
-                value={formatNumber(order.avans)}
+                value={order.avans.toLocaleString()}
               ></input>
             </div>
             <div>
@@ -92,7 +92,7 @@ class OrderFormToPrint extends Component {
                 name="forPayment"
                 className="form-control"
                 readOnly
-                value={formatNumber(order.totalPrice - order.avans)}
+                value={(order.totalPrice - order.avans).toLocaleString()}
               ></input>
             </div>
           </div>

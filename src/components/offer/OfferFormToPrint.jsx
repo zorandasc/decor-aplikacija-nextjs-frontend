@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { formatNumber, formatDate } from "../../utils/helper";
-
+import { formatDate } from "../../utils/numberHelper";
 
 class OfferFormToPrint extends Component {
   render() {
@@ -130,15 +129,15 @@ class OfferFormToPrint extends Component {
           <div className="total-col">
             <div className="total-row">
               <p>Ukupan Iznos</p>
-              <p>{offer.totalPrice} RSD</p>
+              <p>{offer.totalPrice.toLocaleString()} RSD</p>
             </div>
             <div className="total-row">
               <p>Avansno uplaćeno</p>
-              <p>{offer.avans} RSD</p>
+              <p>{offer.avans.toLocaleString()} RSD</p>
             </div>
             <div className="total-row">
               <p>UKUPNO ZA PLAĆANJE</p>
-              <p>{formatNumber(offer.totalPrice - offer.avans)} RSD</p>
+              <p>{(offer.totalPrice - offer.avans).toLocaleString()} RSD</p>
             </div>
           </div>
         </div>
@@ -182,7 +181,7 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height:2.5rem ;
+    height: 2.5rem;
     p {
       padding-left: 1rem;
     }

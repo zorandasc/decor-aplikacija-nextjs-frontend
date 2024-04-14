@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { formatNumber, formatDate } from "../../utils/helper";
+import { formatDate } from "../../utils/numberHelper";
 
 const OffersTable = ({
   columns,
@@ -74,9 +74,9 @@ const OffersTable = ({
                   </div>
                 )}
               </td>
-              <td>{formatNumber(offer.totalPrice)}</td>
-              <td>{formatNumber(offer.avans)}</td>
-              <td>{formatNumber(offer.totalPrice - offer.avans)}</td>
+              <td>{offer.totalPrice.toLocaleString()}</td>
+              <td>{offer.avans.toLocaleString()}</td>
+              <td>{(offer.totalPrice - offer.avans).toLocaleString()}</td>
               <td>{formatDate(offer.dateOfIssue)}</td>
               <td>{formatDate(offer.dateOfValidity)}</td>
             </tr>

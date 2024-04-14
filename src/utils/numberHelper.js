@@ -1,4 +1,6 @@
 //for string representation
+//OVU FUNKCIJU SAM KASNIJE ZAMJENIO
+//SA .toLocaleString()
 export function formatNumber(num) {
   var numSplit, int;
   //var dec;
@@ -12,7 +14,7 @@ export function formatNumber(num) {
   int = numSplit[0];
 
   if (int.length > 3) {
-    int = int.substr(0, int.length - 3) + "," + int.substr(int.length - 3, 3);
+    int = int.substr(0, int.length - 3) + "." + int.substr(int.length - 3, 3);
   }
 
   //dec = numSplit[1];

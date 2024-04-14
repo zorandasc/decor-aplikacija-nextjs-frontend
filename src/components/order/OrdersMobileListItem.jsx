@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import useAuth from "../../hooks/useAuth";
-import { formatNumber, formatDate } from "../../utils/helper";
+import { formatDate } from "../../utils/numberHelper";
 import { statusi } from "../../constants/orderConstants";
 import ROLES from "../../constants/Roles";
 
@@ -132,9 +132,9 @@ const OrdersMobileListItem = ({ item, onEdit, onStatusChange }) => {
       </div>
       <div className="prices">
         <p>Cena RSD</p>
-        <p>{formatNumber(item.totalPrice)}</p>
-        <p>- {formatNumber(item.avans)}</p>
-        <p>= {formatNumber(item.totalPrice - item.avans)}</p>
+        <p>{item.totalPrice.toLocaleString()}</p>
+        <p>- {item.avans.toLocaleString()}</p>
+        <p>= {(item.totalPrice - item.avans).toLocaleString()}</p>
       </div>
     </Container>
   );

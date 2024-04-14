@@ -17,7 +17,7 @@ import {
 } from "../common";
 import { statusi } from "../../constants/offersConstants";
 import OfferFormToPrint from "./OfferFormToPrint";
-import { calculatePrice, formatNumber } from "../../utils/helper";
+import { calculatePrice} from "../../utils/numberHelper";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useFormHook from "../../hooks/useFormHook";
@@ -97,7 +97,7 @@ const OfferForm = () => {
         );
         form.setState(offer);
       } catch (err) {
-        toast.error(`🤑 🤐 🤭 ${err?.message}`);
+        toast.error(`🤐 ${err?.response?.data}`);
         navigate("/offers", { replace: true });
       }
     };
@@ -115,16 +115,18 @@ const OfferForm = () => {
           OFFERS_API_URL + "/" + form.state._id,
           JSON.stringify(body)
         );
-        toast.success(`Ponuda id:${form.state._id}, izmjenjena.`);
+        toast.success(`Izmjena ponude id:${form.state.offerId} uspijesna.`);
       } else {
         await axiosPrivate.post(OFFERS_API_URL, JSON.stringify(form.state));
         setOfferPage(1);
-        toast.success("Nova ponuda kreirana.");
+        toast.success("🤑 Nova ponuda kreirana.");
       }
 
       navigate("/offers");
     } catch (err) {
-      toast.error(`🤑 🤐 🤭 ${err?.message}`);
+      toast.error(
+        `🤐 Status Code: ${err?.response.status}. ${err?.response?.data}`
+      );
     }
   };
 
@@ -148,7 +150,7 @@ const OfferForm = () => {
       if (!answer) return;
       try {
         await axiosPrivate.delete(basePath + "/" + item._id);
-        toast.warning(`🤑Predmet sa id:${item._id}. Obrisan.`);
+        toast.success(`🤑 Ponuda id:${item.offerId} obrisana.`);
       } catch (err) {
         toast.error(`🤐 🤭 Error ocured: ${err?.message}`);
       } finally {
@@ -330,7 +332,7 @@ const OfferForm = () => {
               disabled
               name="totalPrice"
               label="Ukupna Cena (RSD)"
-              value={formatNumber(form.state.totalPrice)}
+              value={form.state.totalPrice.toLocaleString()}
               error={form.errors.totalPrice}
               onChange={form.handleChange}
             ></Input>
@@ -349,7 +351,7 @@ const OfferForm = () => {
                 readOnly
                 name="zaUplatu"
                 className="form-control"
-                value={formatNumber(form.state.totalPrice - form.state.avans)}
+                value={(form.state.totalPrice - form.state.avans).toLocaleString()}
               ></input>
             </div>
           </div>

@@ -10,7 +10,7 @@ const activeColor = ({ isActive }) => ({
   color: isActive ? "rgb(103 179 230)" : "#fff",
 });
 
-const Sidebar = ({ toggleSidebar }) => {
+const Sidebar = ({ sidebar, toggleSidebar }) => {
   const { auth } = useAuth();
   const logout = useLogout();
 
@@ -22,7 +22,7 @@ const Sidebar = ({ toggleSidebar }) => {
   const user = auth?.username;
 
   return (
-    <Wrapper>
+    <Wrapper sidebar={sidebar}>
       <div className="logo">
         <div className="close" onClick={toggleSidebar}>
           <i className="fa fa-times-circle fa-lg" aria-hidden="true"></i>
@@ -80,6 +80,8 @@ const Wrapper = styled.aside`
   background-color: rgba(100, 100, 100, 0.8);
   border-left: 2px solid rgb(103 179 230);
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.9);
+  transform: ${props => (props.sidebar ? 'translateX(0%)' : 'translateX(150%)')};
+  transition: 0.3s all;
   .logo {
     border: 1px solid black;
     width: 100%;

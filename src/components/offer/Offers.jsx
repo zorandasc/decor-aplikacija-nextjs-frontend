@@ -11,7 +11,7 @@ import SearchWidget from "../widgets/search/SearchWidget";
 import StatisticWidget from "../widgets/statistic/StatisticWidget";
 import { BtnNew, BtnExel, Spinner, PaginationV2 } from "../common";
 import { statusi } from "../../constants/offersConstants";
-import { compareDates } from "../../utils/helper";
+import { compareDates } from "../../utils/numberHelper";
 import OffersTable from "./OffersTable";
 import OffersMobileList from "./OffersMobileList";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";

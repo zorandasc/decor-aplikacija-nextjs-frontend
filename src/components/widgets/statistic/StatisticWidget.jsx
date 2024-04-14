@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { formatNumber, calculateTotalPrice } from "../../../utils/helper";
+import { calculateTotalPrice } from "../../../utils/numberHelper";
 import DragMove from "../../common/DragMove";
 import StatisticMobile from "./StatisticMobile";
 
@@ -37,9 +37,9 @@ const StatisticWidget = ({ items, display, onClose }) => {
               </thead>
               <tbody>
                 <tr>
-                  <td> {formatNumber(totPrice)} </td>
-                  <td> {formatNumber(totAvans)} </td>
-                  <td> {formatNumber(totForPayment)} </td>
+                  <td> {totPrice.toLocaleString()} </td>
+                  <td> {totAvans.toLocaleString()} </td>
+                  <td> {totForPayment.toLocaleString()} </td>
                 </tr>
               </tbody>
             </table>

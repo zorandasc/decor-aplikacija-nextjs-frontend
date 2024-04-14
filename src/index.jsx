@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <ToastContainer theme="colored" />
+        <ToastContainer theme="dark" />
         <Routes>
           <Route path="/*" element={<App></App>}></Route>
         </Routes>

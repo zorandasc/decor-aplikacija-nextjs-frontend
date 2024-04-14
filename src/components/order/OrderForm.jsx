@@ -16,7 +16,7 @@ import {
 } from "../common";
 import { statusi, developeri } from "../../constants/orderConstants";
 import OrderFormToPrint from "./OrderFormToPrint";
-import { calculatePrice, formatNumber } from "../../utils/helper";
+import { calculatePrice} from "../../utils/numberHelper";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useFormHook from "../../hooks/useFormHook";
@@ -97,7 +97,7 @@ const OrderForm = () => {
           ORDERS_API_URL + "/" + form._id,
           JSON.stringify(body)
         );
-        toast.success(`🤑 Narudžba id:${body.orderId}, izmjenjena.`);
+        toast.success(`🤑 Uspiješna izmjena narudžbe Id:${body.orderId}.`);
       } else {
         const { data } = await axiosPrivate.post(
           ORDERS_API_URL,
@@ -105,7 +105,7 @@ const OrderForm = () => {
         );
         //posto je uspijesno dodata order prebaci na prvu stranu
         setOrderPage(1);
-        toast.success(`🤑 Nova narudžba sa Id:${data.orderId} kreirana.`);
+        toast.success(`🤑 Kreirana nova narudžba sa Id:${data.orderId}.`);
       }
 
       navigate("/orders");
@@ -141,7 +141,7 @@ const OrderForm = () => {
       if (!answer) return;
       try {
         await axiosPrivate.delete(basePath + "/" + item._id);
-        toast.success(`🤑Predmet sa id:${item.orderId}. Obrisan.`);
+        toast.success(`🤑 Narudžba Id:${item.orderId} obrisana.`);
       } catch (err) {
         toast.error(`🤐 🤭 Error ocured: ${err?.message}`);
       } finally {
@@ -280,7 +280,7 @@ const OrderForm = () => {
             disabled
             name="totalPrice"
             label="Ukupna Cena (RSD)"
-            value={formatNumber(form.totalPrice)}
+            value={form.totalPrice.toLocaleString()}
             error={errors.totalPrice}
             onChange={handleChange}
           ></Input>
@@ -298,7 +298,7 @@ const OrderForm = () => {
               readOnly
               name="zaUplatu"
               className="form-control"
-              value={formatNumber(form.totalPrice - form.avans)}
+              value={(form.totalPrice - form.avans).toLocaleString()}
             ></input>
           </div>
         </div>

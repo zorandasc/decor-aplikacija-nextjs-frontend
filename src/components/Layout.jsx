@@ -10,9 +10,12 @@ const Layout = () => {
   return (
     <>
       <Navbar toggleSidebar={() => setSidebar(!sidebar)}></Navbar>
-      {sidebar && (
-        <Sidebar toggleSidebar={() => setSidebar(!sidebar)}></Sidebar>
-      )}
+
+      <Sidebar
+        sidebar={sidebar}
+        toggleSidebar={() => setSidebar(!sidebar)}
+      ></Sidebar>
+
       <main className="container">
         <Outlet />
       </main>
