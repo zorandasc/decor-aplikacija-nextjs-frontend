@@ -141,7 +141,7 @@ const OrderForm = () => {
       if (!answer) return;
       try {
         await axiosPrivate.delete(basePath + "/" + item._id);
-        toast.success(`🤑 Narudžba Id:${item.orderId} obrisana.`);
+        toast.warning(`💀 Narudžba Id:${item.orderId} obrisana.`);
       } catch (err) {
         toast.error(`🤐 🤭 Error ocured: ${err?.message}`);
       } finally {

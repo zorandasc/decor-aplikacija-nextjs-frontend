@@ -12,7 +12,7 @@ const Navbar = ({ toggleSidebar }) => {
 
   const handleLogout = async () => {
     await logout();
-    toast.dark("🦄🙃 Buy, Buy!");
+    toast("🦄🙃 Buy, Buy!");
   };
 
   const user = auth?.username;
@@ -77,7 +77,18 @@ const Navbar = ({ toggleSidebar }) => {
 const Container = styled.div`
   width: 100%;
   padding: 0;
-  border-bottom: 2px solid rgb(103 179 230);
+  border-width:4px;
+  border-bottom-style: solid;
+  border-image: linear-gradient(
+    to right,
+    #4cd964,
+    #5ac8fa,
+    #007aff,
+    #34aadc,
+    #5856d6,
+    #ff2d55
+  );
+  border-image-slice: 1;
   background: #333;
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.9);
   border-radius: 5px;

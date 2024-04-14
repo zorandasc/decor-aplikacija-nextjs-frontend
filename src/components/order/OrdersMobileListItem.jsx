@@ -93,8 +93,8 @@ const OrdersMobileListItem = ({ item, onEdit, onStatusChange }) => {
               return (
                 <tr key={i}>
                   <td>{name} </td>
-                  <td>{price.toLocaleString()} </td>
-                  <td>{quantity.toLocaleString()} </td>
+                  <td>{Number(price).toLocaleString()} </td>
+                  <td>{Number(quantity).toLocaleString()} </td>
                 </tr>
               );
             })}

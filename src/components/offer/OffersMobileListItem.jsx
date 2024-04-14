@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import useAuth from "../../hooks/useAuth";
-import {  formatDate } from "../../utils/numberHelper";
+import { formatDate } from "../../utils/numberHelper";
 import { statusi } from "../../constants/offersConstants";
 import ROLES from "../../constants/Roles";
 
@@ -97,8 +97,8 @@ const MobileListOfferItem = ({ item, onEdit, onStatusChange }) => {
               return (
                 <tr key={i}>
                   <td>{name} </td>
-                  <td>{price.toLocaleString()} </td>
-                  <td>{quantity.toLocaleString()} </td>
+                  <td>{Number(price).toLocaleString()} </td>
+                  <td>{Number(quantity).toLocaleString()} </td>
                 </tr>
               );
             })}

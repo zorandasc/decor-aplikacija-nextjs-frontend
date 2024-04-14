@@ -115,7 +115,7 @@ const OfferForm = () => {
           OFFERS_API_URL + "/" + form.state._id,
           JSON.stringify(body)
         );
-        toast.success(`Izmjena ponude Id:${form.state.offerId} uspiješna.`);
+        toast.success(`Uspiješna izmjena ponude Id:${form.state.offerId}.`);
       } else {
         await axiosPrivate.post(OFFERS_API_URL, JSON.stringify(form.state));
         setOfferPage(1);
@@ -150,7 +150,7 @@ const OfferForm = () => {
       if (!answer) return;
       try {
         await axiosPrivate.delete(basePath + "/" + item._id);
-        toast.success(`🤑 Ponuda id:${item.offerId} obrisana.`);
+        toast.warning(`💀 Ponuda id:${item.offerId} obrisana.`);
       } catch (err) {
         toast.error(`🤐 🤭 Error ocured: ${err?.message}`);
       } finally {

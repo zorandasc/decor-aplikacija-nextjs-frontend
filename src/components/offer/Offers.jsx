@@ -186,7 +186,7 @@ const Offers = () => {
         JSON.stringify(offerToSend)
       );
 
-      toast.success(`Status ponude ${offer._id}, promjenjen.`);
+      toast.success(`Status ponude ${offer.offerId} promijenjen.`);
     } catch (err) {
       toast.error(`😢 Dogodila se greška.  ${err?.message}`);
       //if feiliure, rollback

@@ -182,7 +182,7 @@ const Orders = () => {
         JSON.stringify(orderToSend)
       );
 
-      toast.success(`Status narudžbe ${order.orderId}, promjenjen.`);
+      toast.success(`👋 Status narudžbe ${order.orderId} promijenjen.`);
     } catch (err) {
       toast.error(`😢 Dogodila se greška.  ${err?.message}`);
       //if feiliure, rollback
