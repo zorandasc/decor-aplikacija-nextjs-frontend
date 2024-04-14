@@ -77,6 +77,7 @@ const Navbar = ({ toggleSidebar }) => {
 const Container = styled.div`
   width: 100%;
   padding: 0;
+  /*
   border-width:4px;
   border-bottom-style: solid;
   border-image: linear-gradient(
@@ -89,6 +90,8 @@ const Container = styled.div`
     #ff2d55
   );
   border-image-slice: 1;
+  */
+  border-bottom: 2px solid rgb(103 179 230);
   background: #333;
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.9);
   border-radius: 5px;
