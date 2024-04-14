@@ -45,7 +45,7 @@ const Wrapper = styled.div`
 
   .product_info {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     align-items: center;
   }
   .product_delete {
