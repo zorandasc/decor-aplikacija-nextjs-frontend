@@ -115,7 +115,7 @@ const OfferForm = () => {
           OFFERS_API_URL + "/" + form.state._id,
           JSON.stringify(body)
         );
-        toast.success(`Izmjena ponude id:${form.state.offerId} uspijesna.`);
+        toast.success(`Izmjena ponude Id:${form.state.offerId} uspiješna.`);
       } else {
         await axiosPrivate.post(OFFERS_API_URL, JSON.stringify(form.state));
         setOfferPage(1);
@@ -229,6 +229,7 @@ const OfferForm = () => {
         </div>
 
         <form onSubmit={form.handleSubmit}>
+        <p>ID Ponude: {form.state.offerId}</p>
           <div className="row customer">
             <div>
               <Select

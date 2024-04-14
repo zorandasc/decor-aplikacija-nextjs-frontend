@@ -99,7 +99,6 @@ const InputProduct = ({ addProduct, disabled, fold, handleFold }) => {
           error={errors.price}
           type="number"
           className="add-value"
-          placeholder="Cena"
         ></Input>
         <Input
           name="quantity"
@@ -137,7 +136,7 @@ const Wrapper = styled.div`
   grid-template-columns: 2fr;
   padding: 0.3rem 1rem;
   padding-bottom: 0;
-  background-color: #6f767d;
+  background-color: #556e87;
   margin: 0 auto;
   border-radius: 0.25rem;
   box-shadow: 10px 6px 18px 0px rgb(0 0 0 / 70%);

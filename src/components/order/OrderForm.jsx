@@ -217,7 +217,7 @@ const OrderForm = () => {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <p>ID Narudžbe: {orderId}</p>
+        <p>ID Narudžbe: {form.orderId}</p>
         <div className="row">
           <Select
             name="status"
@@ -287,7 +287,7 @@ const OrderForm = () => {
           <Input
             name="avans"
             label="Avans (RSD)"
-            value={form.avans}
+            value={form.avans.toLocaleString()}
             error={errors.avans}
             onChange={handleChange}
           ></Input>

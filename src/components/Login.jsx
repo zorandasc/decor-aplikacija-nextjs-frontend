@@ -45,7 +45,7 @@ const Login = () => {
 
       setAuth({ username: form.username, roles, accessToken });
 
-      toast.success(`🦄🤑😁 Welcome: ${form.username} `);
+      toast.success(`🦄🤑😁 Welcome ${form.username} `);
 
       setLoading(false);
 

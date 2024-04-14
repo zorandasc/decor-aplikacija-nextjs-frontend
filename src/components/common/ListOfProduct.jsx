@@ -11,8 +11,8 @@ const ListOfProduct = ({ items, error, deleteProduct, disabled }) => {
           <div className="products" key={i}>
             <div className="product_name">{product.name}</div>
             <div className="product_info">
-              <div>{product.price} RSD</div>
-              <div>{product.quantity} Kom.</div>
+              <div>{Number(product.price).toLocaleString()} RSD</div>
+              <div>{Number(product.quantity).toLocaleString()} Kom.</div>
               <div className="product_delete">
                 <button
                   disabled={disabled}
