@@ -6,7 +6,7 @@ const Footer = () => {
     <Wrapper>
       <p>
         &copy; {new Date().getFullYear()} Created By Nazor. All rights reserved.
-        Built with React.js
+        Built with React.js and Next.js
       </p>
       <h3>Naši Partneri</h3>
       <div className="links">

@@ -243,6 +243,7 @@ const OrderForm = () => {
             value={form.customer}
             onChange={handleChange}
             error={errors.customer}
+            autoComplete="off"
           ></Input>
           <TextArea
             name="address"

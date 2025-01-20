@@ -24,7 +24,7 @@ const Navbar = ({ toggleSidebar }) => {
   return (
     <Container>
       <div className="logo">
-        <h1>BAZA NARUDŽBI DEKORATIVNIH PREDMETA</h1>
+        <h1>BAZA NARUDŽBI DEKORATIVNIH PREDMETA v2.0.0</h1>
         <div className="hamburger" onClick={toggleSidebar}>
           <i className="fa fa-bars fa-lg" aria-hidden="true"></i>
         </div>
